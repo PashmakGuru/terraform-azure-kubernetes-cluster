@@ -21,43 +21,20 @@ resource "azurerm_key_vault" "this" {
   tenant_id                   = data.azurerm_client_config.current.tenant_id
   soft_delete_retention_days  = 7
   purge_protection_enabled    = false
+  enable_rbac_authorization = true
 
   sku_name = "standard"
   tags = local.common_tags
-
-  access_policy {
-    tenant_id = data.azurerm_client_config.current.tenant_id
-    object_id = data.azurerm_client_config.current.object_id
-
-    key_permissions = [
-      "Create",
-      "Get",
-      "List"
-    ]
-
-    secret_permissions = [
-      "Set",
-      "Get",
-      "List",
-      "Delete",
-      "Purge",
-      "Recover"
-    ]
-  }
 }
 
-resource "azurerm_key_vault_access_policy" "allow_platform_engineers" {
-  key_vault_id = azurerm_key_vault.this.id
-  tenant_id    = data.azurerm_client_config.current.tenant_id
-  object_id    = data.azuread_group.platform_engineers.id
+resource "azurerm_role_assignment" "kv_allow_current_sp" {
+  scope                = azurerm_key_vault.this.id
+  role_definition_name = "Key Vault Secrets Officer"
+  principal_id         = data.azurerm_client_config.current.object_id
+}
 
-  key_permissions = [
-    "List",
-    "Get",
-  ]
-
-  secret_permissions = [
-    "List",
-    "Get",
-  ]
+resource "azurerm_role_assignment" "kv_allow_platform_engineers" {
+  scope                = azurerm_key_vault.this.id
+  role_definition_name = "Key Vault Administrator"
+  principal_id         = data.azuread_group.platform_engineers.id
 }
