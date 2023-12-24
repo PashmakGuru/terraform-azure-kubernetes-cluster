@@ -33,3 +33,8 @@ resource "azurerm_key_vault_secret" "admin_ssh_private_key" {
 
   tags = local.common_tags
 }
+
+data "azurerm_ssh_public_key" "admin_ssh_public_key" {
+  name                = "ssh-key-linux-admin"
+  resource_group_name = azurerm_resource_group.this.name
+}
