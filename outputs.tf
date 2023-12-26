@@ -3,6 +3,6 @@ output "resource_group" {
 }
 
 output "kubernetes_cluster" {
-  value     = data.azurerm_kubernetes_cluster.this
+  value     = azurerm_kubernetes_cluster.this
   sensitive = true
 }
