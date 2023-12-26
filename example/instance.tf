@@ -2,7 +2,8 @@
 module "kubernetes-cluster" {
   source  = "./../"
   
-  environment = "prod"
-  location = "West Europe"
-  name = "module-example"
+  environment = "production"
+  location = "West US"
+  name = "example"
+  resource_group_name = "kubernetes-cluster-solution_example-testing"
 }

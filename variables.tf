@@ -8,9 +8,13 @@ variable "name" {
   }
 }
 
+variable "resource_group_name" {
+  type        = string
+}
+
 variable "location" {
   type        = string
-  default     = "West Europe"
+  default     = "West US"
   description = "The Azure region where the AKS cluster will be deployed. Defaults to 'West Europe'. It's important to select a region close to the users for better performance."
 }
 

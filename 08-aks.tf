@@ -1,8 +1,8 @@
 resource "azurerm_kubernetes_cluster" "this" {
-  name                = local.id
+  name                = var.name
   location            = azurerm_resource_group.this.location
   resource_group_name = azurerm_resource_group.this.name
-  dns_prefix          = local.id
+  dns_prefix          = var.name
 
   sku_tier = "Free"
   kubernetes_version = "1.28"
