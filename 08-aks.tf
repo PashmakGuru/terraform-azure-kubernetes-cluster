@@ -6,6 +6,8 @@ resource "azurerm_kubernetes_cluster" "this" {
 
   sku_tier = "Free"
   kubernetes_version = "1.28"
+  oidc_issuer_enabled = true
+  workload_identity_enabled = true
 
   default_node_pool {
     name       = "default"
