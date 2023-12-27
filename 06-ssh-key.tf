@@ -27,6 +27,7 @@ resource "azapi_resource_action" "ssh_public_key_gen" {
 }
 
 resource "azurerm_key_vault_secret" "admin_ssh_private_key" {
+    depends_on =[ azurerm_role_assignment.kv_allow_current_sp ]
   name         = "admin-ssh-private-key"
   value        = jsondecode(azapi_resource_action.ssh_public_key_gen.output).privateKey
   key_vault_id = azurerm_key_vault.this.id

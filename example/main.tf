@@ -2,7 +2,7 @@ terraform {
   required_providers  {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "~> 3.79.0"
+      version = "3.85.0"
     }
   }
   required_version = "~> 1.6.3"
@@ -24,4 +24,10 @@ provider "azurerm" {
   client_id = var.azure_client_id
   client_secret = var.azure_client_secret
   tenant_id = var.azure_tenant_id
+}
+
+provider "azuread" {
+  client_id     = var.azure_client_id
+  client_secret = var.azure_client_secret
+  tenant_id     = var.azure_tenant_id
 }
