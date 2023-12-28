@@ -36,6 +36,7 @@ resource "azurerm_key_vault_secret" "admin_ssh_private_key" {
 }
 
 data "azurerm_ssh_public_key" "admin_ssh_public_key" {
+  depends_on = [ azapi_resource_action.ssh_public_key_gen ]
   name                = "ssh-key-linux-admin"
   resource_group_name = azurerm_resource_group.this.name
 }
