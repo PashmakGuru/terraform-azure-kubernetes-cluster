@@ -35,4 +35,3 @@ resource "azurerm_kubernetes_cluster" "this" {
 
   tags = local.common_tags
 }
-
