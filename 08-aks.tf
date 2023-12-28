@@ -15,6 +15,12 @@ resource "azurerm_kubernetes_cluster" "this" {
     node_count = 1
     vm_size    = "Standard_D2_v2"
     vnet_subnet_id = azurerm_subnet.cluster.id
+
+    # A workaround to the fact that Terraform is no keeping this state
+    # @see [Every plan run resets upgrade_settings.max_surge for default_node_pool #24020](https://github.com/hashicorp/terraform-provider-azurerm/issues/24020)
+    upgrade_settings {
+      max_surge = "10%"
+    }
   }
 
   linux_profile {
