@@ -5,7 +5,7 @@ terraform {
       version = "3.85.0"
     }
     helm = {
-      source = "hashicorp/helm"
+      source  = "hashicorp/helm"
       version = "~> 2.12.1"
     }
     azapi = {
@@ -17,7 +17,7 @@ terraform {
       version = "~>3.0"
     }
     azuread = {
-      source = "hashicorp/azuread"
+      source  = "hashicorp/azuread"
       version = "2.47.0"
     }
   }
