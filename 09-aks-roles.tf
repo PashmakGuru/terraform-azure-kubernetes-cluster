@@ -1,5 +1,3 @@
-// @see https://learn.microsoft.com/en-us/azure/aks/kubernetes-service-principal
-// @see https://learn.microsoft.com/en-us/azure/aks/use-managed-identity
 locals {
   aks_rg_roles = [
     "Network Contributor",

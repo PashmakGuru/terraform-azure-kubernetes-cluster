@@ -1,4 +1,3 @@
-# Port Generated (demo)
 module "kubernetes-cluster" {
   source = "./../"
 
