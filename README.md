@@ -6,6 +6,11 @@
 
 This Terraform module is designed to set up an Azure Kubernetes Service (AKS) cluster along with necessary networking and security components. It provides a straightforward approach to deploy a fully functional AKS cluster in Azure.
 
+### Terraform Architecture
+```mermaid
+%%tfmermaid
+```
+
 ## Features
 
 - **Azure Resource Group Creation:** Initiates a resource group for managing all related Azure resources.
@@ -31,4 +36,4 @@ A working example of how to use this module is provided in the `example` directo
 ## Workflows
 | Name | Description |
 |---|---|
-| [terraform-ci.yaml](.github/workflows/terraform-ci.yaml) | A workflow for linting and auto-formatting Terraform code. Triggered by pushes to  `main` and `dev` branches or on pull requests, it consists of two jobs: `tflint` for lint checks and  `format` for code formatting and automated pull requests. |
+| [terraform-ci.yaml](.github/workflows/terraform-ci.yaml) | A workflow for linting and auto-formatting Terraform code. Triggered by pushes to  `main` and `dev` branches or on pull requests, it consists of two jobs: `tflint` for lint checks, `format` for code formatting and submit a PR, and `tfmermaid` to update architecture graph and submit a PR. |
